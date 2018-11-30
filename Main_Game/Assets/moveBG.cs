@@ -19,4 +19,5 @@ public class moveBG : MonoBehaviour {
 	void Update () {
 		objectMaterial.mainTextureOffset += offset * Time.deltaTime * wight ;
 	}
+
 }
