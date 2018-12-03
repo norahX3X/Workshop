@@ -7,6 +7,7 @@ public class creator : MonoBehaviour {
 
 	public GameObject[] obstacleTemplate;
 	public GameObject[] fruits;
+	public GameObject ground;
 
 	public float speed;
 	//public GameObject effect;
@@ -20,7 +21,11 @@ public class creator : MonoBehaviour {
 		if (timeBtwSpawns <= 0)
 		{
 			int rand = Random.Range(0, obstacleTemplate.Length);
-			Instantiate(obstacleTemplate[rand], transform.position, Quaternion.identity);
+			if(rand < 3) 
+				Instantiate(obstacleTemplate[rand],new Vector3(transform.position.x,ground.transform.position.y+0.9f,transform.position.z), Quaternion.identity);
+			else
+				Instantiate(obstacleTemplate[rand], new Vector3(transform.position.x,ground.transform.position.y+2f,transform.position.z), Quaternion.identity);
+			
 			timeBtwSpawns = Random.Range(0.56f, 1.5f);
 
 

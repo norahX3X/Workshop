@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &71967702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,12 +141,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleTemplate:
   - {fileID: 1706759063828696, guid: bdd9421c455514207bd29c57906f13ab, type: 2}
+  - {fileID: 1969888607812322, guid: 6b2cf251eff464aebb63c635df1d5a60, type: 2}
   - {fileID: 1662739845385288, guid: 6e34c5f4e334e4580b9505646c1df316, type: 2}
-  - {fileID: 1052782445286618, guid: 709e59f5d667b45559c0caab4b9ddbb7, type: 2}
   - {fileID: 1138474829318808, guid: 4d39532678dfe4b449a0ca8d6fd50371, type: 2}
   - {fileID: 1322695621662088, guid: 93a6e4a8a6adb4876a109ed3881b4020, type: 2}
-  - {fileID: 1969888607812322, guid: 6b2cf251eff464aebb63c635df1d5a60, type: 2}
+  - {fileID: 1052782445286618, guid: 709e59f5d667b45559c0caab4b9ddbb7, type: 2}
   fruits: []
+  ground: {fileID: 2130559138}
   speed: 0
 --- !u!4 &71967703
 Transform:
@@ -1273,7 +1274,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.041933686}
+  m_Offset: {x: 0, y: -0.07}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

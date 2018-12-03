@@ -30,7 +30,7 @@ public class playerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//transform.position = Vector2.MoveTowards (transform.position, new Vector3(3,0,0) , speed * Time.deltaTime);
-		if (Input.GetKeyDown(KeyCode.UpArrow)/*&& grounded*/)//change it with button listner
+		if (Input.GetKeyDown(KeyCode.UpArrow)&& grounded)//change it with button listner
 		{
 			Jump ();
 		}
@@ -48,28 +48,31 @@ public class playerController : MonoBehaviour {
 
 	void Jump(){
 		rB.velocity = Vector2.up * jumpForce;
+		animation.SetBool ("scrolling", false);
 		animation.SetBool ("jumping", true);
+		grounded = false;
+
 		//Jump = true;
 
 	}
 
 	void Scroll(){
+		animation.SetBool ("jumping", false);
 		animation.SetBool ("scrolling", true);
 
 	}
 	public void Landing(){
 		animation.SetBool ("jumping", false);
-		//Jump = false;
+		grounded = true;
 	}
+	void OnCollisionEnter2D(Collision2D other ){
 
-	public void OnCollisionEnter (Collision2D col)
-	{
-		print("colgin");
-		if(col.gameObject.tag == "obstecale")
+
+		if(other.gameObject.tag == "obstecale")
 		{print("ops");
 			//Destroy(col.gameObject);
 		}
-		else if (col.gameObject.tag=="ground") {
+		else if (other.gameObject.tag=="ground") {
 			print("ground");
 			Landing ();
 
@@ -84,6 +87,7 @@ public class playerController : MonoBehaviour {
 	private void OnTriggerEnter2D( UnityEngine.Collider2D other)
 	{
 		if (other.CompareTag("obstecale")) {
+			
 			print("ops");
 
 			//make it lay on horizintal line
