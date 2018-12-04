@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moveBG : MonoBehaviour {
+public class moveBackground : MonoBehaviour {
 	Material objectMaterial;
 	Vector2 offset;
 	public int Xv, Yv;
@@ -15,10 +15,9 @@ public class moveBG : MonoBehaviour {
 	void Start () {
 		offset = new Vector2 (Xv, Yv);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		objectMaterial.mainTextureOffset += offset * Time.deltaTime * wight ;
 	}
-
 }

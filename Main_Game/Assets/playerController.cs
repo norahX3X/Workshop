@@ -34,7 +34,7 @@ public class playerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//transform.position = Vector2.MoveTowards (transform.position, new Vector3(transform.position.x+1f,0,0) , speed * Time.deltaTime);
-		if (Input.GetKeyDown(KeyCode.UpArrow)&& grounded)//change it with button listner
+		if (Input.GetKeyDown(KeyCode.UpArrow)/*&& grounded*/)//change it with button listner
 		{
 			Jump ();
 		}
@@ -52,6 +52,7 @@ public class playerController : MonoBehaviour {
 
 	void Jump(){
 		rB.velocity = Vector2.up * jumpForce;
+
 		animation.SetBool ("scrolling", false);
 		animation.SetBool ("jumping", true);
 		grounded = false;
