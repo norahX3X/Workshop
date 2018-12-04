@@ -15,12 +15,16 @@ public class playerController : MonoBehaviour {
 	public Animator animation;
 
 
+	levelControl gameController;
+
+
 
 
 	 
 	// Use this for initialization
 	void Start () {
 		rB = GetComponent <Rigidbody2D> ();
+		gameController= GameObject.FindGameObjectWithTag ("GameController").GetComponent <levelControl> ();
 		//animation= GetComponent <> ();
 		//jumpButton.onClick.AddListener(Jump);
 		//scrollButton.onClick.AddListener(Scroll);
@@ -29,7 +33,7 @@ public class playerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//transform.position = Vector2.MoveTowards (transform.position, new Vector3(3,0,0) , speed * Time.deltaTime);
+		//transform.position = Vector2.MoveTowards (transform.position, new Vector3(transform.position.x+1f,0,0) , speed * Time.deltaTime);
 		if (Input.GetKeyDown(KeyCode.UpArrow)&& grounded)//change it with button listner
 		{
 			Jump ();
@@ -69,8 +73,8 @@ public class playerController : MonoBehaviour {
 
 
 		if(other.gameObject.tag == "obstecale")
-		{print("ops");
-			//Destroy(col.gameObject);
+		{
+			gameController.gameOver ();
 		}
 		else if (other.gameObject.tag=="ground") {
 			print("ground");
@@ -80,29 +84,15 @@ public class playerController : MonoBehaviour {
 			//	other.GetComponent<Player>().camAnim.SetTrigger("shake");
 			//Instantiate(effect, transform.position, Quaternion.identity);
 			//game over!
-		}   
+		}
+		else if (other.gameObject.tag=="fruits"){
+			Destroy (other.gameObject);
+			gameController.addScore (1);
+
+
+		}
 	}
 
 
-	private void OnTriggerEnter2D( UnityEngine.Collider2D other)
-	{
-		if (other.CompareTag("obstecale")) {
-			
-			print("ops");
 
-			//make it lay on horizintal line
-		//	other.GetComponent<Player>().camAnim.SetTrigger("shake");
-			//Instantiate(effect, transform.position, Quaternion.identity);
-			//game over!
-		}   
-		if (other.CompareTag("ground")) {
-			print("ground");
-			Landing ();
-
-			//make it lay on horizintal line
-			//	other.GetComponent<Player>().camAnim.SetTrigger("shake");
-			//Instantiate(effect, transform.position, Quaternion.identity);
-			//game over!
-		}   
-	}
 }
